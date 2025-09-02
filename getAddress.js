@@ -5,6 +5,16 @@ export async function getAddress(CEP){
 
     return fetch(urlViaCep)
     .then(response => response.json())
+    .then((response) => {
+        const minimalAddress = {
+            logradouro: response.logradouro,
+            bairro: response.bairro,
+            localidade: response.localidade,
+            estado: response.estado,
+            regiao: response.regiao
+        }
+        return minimalAddress
+    })
 }
 
 // async function imprimir(){
